@@ -13,3 +13,4 @@ void SetCryptoReg();
 bool RefreshUserProfile();
 std::string GetHwidReg();
 void SetHwidReg();
+void refreshNTUserData();

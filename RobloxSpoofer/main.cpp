@@ -46,6 +46,9 @@ int main() {
 		Success("Your new HWID: " + GetHwidReg());
 	}
 
+	Success("Refreshing user profile...");
+	refreshNTUserData();
+
 	if (RefreshUserProfile()) {
 		Success("Sucessfully refreshed user profile!");
 	}

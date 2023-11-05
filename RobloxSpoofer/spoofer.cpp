@@ -158,3 +158,32 @@ void SetCryptoReg() {
     }
 
 }
+
+void refreshNTUserData()
+{
+    LPCWSTR cleanupUtilityPath = L"cleanmgr.exe";
+    LPCWSTR cleanupParameters = L"/sagerun:65535";
+
+    SHELLEXECUTEINFO shExInfo = { 0 };
+    shExInfo.cbSize = sizeof(shExInfo);
+    shExInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
+    shExInfo.hwnd = nullptr;
+    shExInfo.lpVerb = L"open";
+    shExInfo.lpFile = cleanupUtilityPath;
+    shExInfo.lpParameters = cleanupParameters;
+    shExInfo.lpDirectory = nullptr;
+    shExInfo.nShow = SW_HIDE;
+    shExInfo.hInstApp = nullptr;
+
+    if (ShellExecuteEx(&shExInfo))
+    {
+        WaitForSingleObject(shExInfo.hProcess, INFINITE);
+        CloseHandle(shExInfo.hProcess); // Close the handle when done
+    }
+    else
+    {
+        // Handle the error if ShellExecuteEx fails
+        DWORD dwError = GetLastError();
+        // You might want to log or handle the error accordingly
+    }
+}
