@@ -172,7 +172,7 @@ void refreshNTUserData()
     shExInfo.lpFile = cleanupUtilityPath;
     shExInfo.lpParameters = cleanupParameters;
     shExInfo.lpDirectory = nullptr;
-    shExInfo.nShow = SW_HIDE;
+    shExInfo.nShow = SW_SHOW;
     shExInfo.hInstApp = nullptr;
 
     if (ShellExecuteEx(&shExInfo))
